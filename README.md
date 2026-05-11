@@ -79,5 +79,39 @@ coach = Agent[UserInfo](
     model=llm_model,
     tools=[fetch_user_age_name],
 )
+res = Runner.run_sync(
+    coach,
+    input="What is the age, name, and UID?",
+    context=user_info,
+)
+print(res.final_output)
+✅ Expected Output
+
+('John', 47, 123)
+
+💡 How It Works
+
+The UserInfo object acts as the context.
+
+RunContextWrapper gives the tool access to this context inside the function.
+
+The Agent uses the provided tool and context to generate responses dynamically.
+
+The Runner executes the agent synchronously and prints the final output.
+
+🧠 Example Use Case
+
+You can extend this concept to:
+
+Pass user preferences or chat session state dynamically.
+
+Build personalized assistants that remember user profiles.
+
+Integrate context-aware function calls in multi-agent systems.
+
+🧾 License
+
+This project is for educational and demonstration purposes only.
+Use responsibly and ensure your API keys remain private.
 
 
